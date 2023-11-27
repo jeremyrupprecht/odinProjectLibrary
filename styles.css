@@ -1,3 +1,10 @@
+:root {
+    --foreground-light: white;
+    --background-light: white;
+    --foreground-dark: black;
+    --background-dark: rgb(44, 44, 44);
+}
+
 html {
-    background-color: gray;
+    background-color: var(--background-dark);
 }
