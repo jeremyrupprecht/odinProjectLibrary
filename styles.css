@@ -1,10 +1,33 @@
 :root {
     --foreground-light: white;
     --background-light: white;
-    --foreground-dark: black;
+    --foreground-dark: rgb(8, 8, 8);
     --background-dark: rgb(44, 44, 44);
 }
 
-html {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+body {
     background-color: var(--background-dark);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header, .footer {
+    background-color: var(--foreground-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.footer {
+    margin-top: auto;
 }
