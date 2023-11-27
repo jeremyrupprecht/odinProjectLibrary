@@ -14,3 +14,15 @@ function Book(title, author, pages, read) {
 function addBookToLibrary() {
 
 }
+
+function displayBooks() {
+
+}
+
+// let AddBooks = document.querySelector();
+
+
+// Remove the "Confirm Form Resubmission" prompt on page refresh
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
