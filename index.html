@@ -14,13 +14,13 @@
         </div>
     </div>
 
-    <button class="addBookButton">
-        <h2>+ Add book</h2>
-    </button>
+    <button class="addBookButton">+ Add Book</button>
+
+    <div class="booksGrid"></div>
 
     <div class="modalBackground"></div>
     <div class="addBookModal">
-        <form action="" method="post">
+        <form action="" method="post" id="addBookForm">
             <h2>Add new book</h2>
 
             <div class="form-row">
@@ -40,9 +40,9 @@
 
             <div class="form-row">
                 <label for="readItInput" id="readItlabel">Have you read it?</label>
-                <input type="checkbox" id="readItInput" name="readIt">
+                <input type="checkbox" id="readItInput" name="readIt" value="yes">
             </div>
-            <button>Submit</button>
+            <button type="submit" value="submit">Submit</button>
         </form>
     </div>
 

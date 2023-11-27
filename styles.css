@@ -3,6 +3,7 @@
     --background-light: white;
     --foreground-dark: rgb(15, 15, 15);
     --background-dark: rgb(44, 44, 44);
+    --max-container-width: 1200px;
 }
 
 * {
@@ -35,9 +36,13 @@ body > div {
 }
 
 .header-middle {
-    width: 800px;
+    max-width: var(--max-container-width);
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
 }
 
 .footer {
@@ -52,9 +57,50 @@ button {
 
 .addBookButton {
     height: 50px;
-    width: 150px;
+    width: 200px;
     background-color: var(--foreground-dark);
-    margin-top: 50px;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 40px 0px;
+    padding: 10px;
+}
+
+
+.booksGrid {
+    max-width: var(--max-container-width);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.bookCard {
+    background-color: var(--foreground-dark);
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.bookCard > * {
+    margin-bottom: 15px;
+}
+
+.readButton, .removeButton {
+    height: 50px;
+    width: 90%;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.readButton {
+    background-color: green;
+}
+
+.removeButton {
+    background-color: var(--background-dark);
 }
 
 .modalBackground {
@@ -112,11 +158,11 @@ input[type="text"], input[type="number"] {
     background-color: var(--background-dark);
     border: 0;
     padding-left: 10px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 input::placeholder {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 form > div {
