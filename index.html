@@ -21,10 +21,23 @@
     <div class="addBookModal">
         <form action="" method="post">
             <h2>Add new book</h2>
-            <input type="text" class="inputField" id="titleInput" placeholder="Title *" name="title">
-            <input type="text" class="inputField" id="authorInput" placeholder="Author *" name="author">
-            <input type="number" class="inputField" id="pagesInput" placeholder="Pages *" name="pages">
-            <div>
+
+            <div class="form-row">
+                <input type="text" class="inputField" id="titleInput" placeholder="Title *" name="title" required>
+                <div class="focus-text">Title</div>
+            </div>
+
+            <div class="form-row">
+                <input type="text" class="inputField" id="authorInput" placeholder="Author *" name="author" required>
+                <div class="focus-text">Author</div>
+            </div>
+
+            <div class="form-row">
+                <input type="number" class="inputField" id="pagesInput" placeholder="Pages *" name="pages" min="1" required>
+                <div class="focus-text">Pages</div>
+            </div>
+
+            <div class="form-row">
                 <label for="readItInput" id="readItlabel">Have you read it?</label>
                 <input type="checkbox" id="readItInput" name="readIt">
             </div>

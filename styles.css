@@ -60,7 +60,7 @@ button {
 .addBookModal {
     display: flex;
     position: absolute;
-    width: 300px;
+    width: 400px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -78,8 +78,13 @@ form {
     align-items: center;
 }
 
-form > * {
+form > *:not(.focus-text) {
     margin-bottom: 35px;
+}
+
+.form-row {
+    width: 100%;
+    position: relative;
 }
 
 .inputField {
@@ -93,6 +98,7 @@ input[type="text"], input[type="number"] {
     background-color: var(--background-dark);
     border: 0;
     padding-left: 10px;
+    font-size: 1.1rem;
 }
 
 input::placeholder {
@@ -102,7 +108,7 @@ input::placeholder {
 form > div {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    justify-content: center;
 }
 
 #readItlabel {
@@ -112,6 +118,8 @@ form > div {
 
 input[type="checkbox"] {
     margin-left: 10px;
+    width: 20px;
+    height: 20px;
 }
 
 form > button {
@@ -122,3 +130,41 @@ form > button {
     text-align: center;
     margin-bottom: 15px;
 }
+
+/* Validation Styling */
+
+input:focus:valid, input:not(:focus):not(:placeholder-shown):valid {
+    border: 2px solid green;
+}
+
+input:focus:invalid, input:not(:focus):not(:placeholder-shown):invalid  {
+    border: 2px solid red;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+.focus-text {
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    left: 23px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+input:focus + div {
+    visibility: visible;
+    transform: translateX(0px) translateY(-20px);
+    transition-duration: 0.3s;
+}
+
+input:focus:valid + div {
+    background-color: green;
+}
+
+input:focus:invalid + div {
+    background-color: red;
+}
+
