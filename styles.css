@@ -1,7 +1,7 @@
 :root {
     --foreground-light: white;
     --background-light: white;
-    --foreground-dark: rgb(8, 8, 8);
+    --foreground-dark: rgb(15, 15, 15);
     --background-dark: rgb(44, 44, 44);
 }
 
@@ -17,7 +17,12 @@ body {
     background-color: var(--background-dark);
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100vh;
+}
+
+body > div {
+    width: 100%;
 }
 
 .header, .footer {
@@ -28,6 +33,25 @@ body {
     height: 80px;
 }
 
+.header-middle {
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .footer {
     margin-top: auto;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.addBookButton {
+    height: 50px;
+    width: 150px;
+    background-color: var(--foreground-dark);
+    margin-top: 50px;
 }
