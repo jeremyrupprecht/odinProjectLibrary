@@ -5,19 +5,19 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    // this.info = function() {
-    //   return this.read === "yes" ? `${this.title} by ${this.author}, ${this.pages}, read already`
-    //                              : `${this.title} by ${this.author}, ${this.pages}, not read yet`; 
-    // }
-  }
+}
+
+Book.prototype.readBook = function() {
+    this.read ? this.read = false : this.read = true;
+};
 
 function addBookToLibrary() {
     let book = new Book(document.getElementById('titleInput').value,
                         document.getElementById('authorInput').value,
                         document.getElementById('pagesInput').value,
                         document.getElementById('readItInput').checked);
-    myLibrary.push(book);
 
+    // Create and add book DOM element
     const bookElement = document.createElement("div");
     bookElement.classList.add("bookCard");
 
@@ -33,7 +33,8 @@ function addBookToLibrary() {
 
     const readButton = document.createElement("button");
     readButton.classList.add("readButton");
-    readButton.textContent = "Read";
+    readButton.textContent = book.read ? "Not Read" : "Read";
+    readButton.style.backgroundColor = book.read ? "rgb(255, 34, 34)" : "green";
     bookElement.appendChild(readButton);
 
     const removeButton = document.createElement("button");
@@ -44,60 +45,37 @@ function addBookToLibrary() {
     const booksGrid = document.querySelector('.booksGrid');
     booksGrid.appendChild(bookElement);
 
-    displayBooks();
+    // Add data-attribute to associate DOM element with book object
+    myLibrary.push(book);
+    bookElement.setAttribute("data-index", myLibrary.length-1);
+
+    readButton.addEventListener('click', () => {
+        readBook(book, readButton);
+    });
+
+    removeButton.addEventListener('click', () => {
+        removeBookFromLibrary(bookElement);
+    });
+
 }
 
-function displayBooks() {
-    // for (let i = 0; i < myLibrary.length; i++) {
-    //     const book = document.createElement("div");
+function readBook(book, readButtonElement) {
+    book.readBook();
+    if (book.read) {
+        readButtonElement.style.backgroundColor = "rgb(255, 34, 34)";
+        readButtonElement.textContent = "Not Read";
+    } else {
+        readButtonElement.style.backgroundColor = "green";
+        readButtonElement.textContent = "Read";
+    }
 
-    // }
 }
 
-// function createTestBooks() {
-//     let book1 = new Book("testing", "jer", 23, true);
-//     let book2 = new Book("title2", "jer2", 223, true);
-//     let book3 = new Book("booger aids", "jer3", 4, false);
-//     const book1Element = document.createElement("div");
-//     const book2Element = document.createElement("div");
-//     const book3Element = document.createElement("div");
-//     book1Element.classList.add("bookCard");
-//     book2Element.classList.add("bookCard");
-//     book3Element.classList.add("bookCard");
-//     const booksGrid = document.querySelector('.booksGrid');
-//     booksGrid.appendChild(book1Element);
-//     booksGrid.appendChild(book2Element);
-//     booksGrid.appendChild(book3Element);
-
-//     const title1 = document.createElement("h2");
-//     title1.textContent = book1.title;
-//     book1Element.appendChild(title1);
-//     const author1 = document.createElement("h2");
-//     author1.textContent = book1.author;
-//     book1Element.appendChild(author1);
-//     const pages1 = document.createElement("h2");
-//     pages1.textContent = book1.pages;
-//     book1Element.appendChild(pages1);
-
-//     const readButton = document.createElement("button");
-//     readButton.classList.add("readButton");
-//     readButton.textContent = "Read";
-//     book1Element.appendChild(readButton);
-
-//     const removeButton = document.createElement("button");
-//     removeButton.classList.add("removeButton");
-//     removeButton.textContent = "Remove";
-//     book1Element.appendChild(removeButton);
-
-//     myLibrary.push(book1);
-//     myLibrary.push(book2);
-//     myLibrary.push(book3);
-// }
-// createTestBooks();
-
-function removeBookFromLibrary() {
-
-
+function removeBookFromLibrary(book) {
+    const booksGrid = document.querySelector('.booksGrid');
+    booksGrid.removeChild(book);
+    let bookIndex = book.getAttribute("data-index");
+    myLibrary.splice(myLibrary.indexOf(bookIndex), 1);
 }
 
 function openModal() {
@@ -115,7 +93,6 @@ function closeModal(e) {
     }
 }
 
-
 const addBookButton = document.querySelector('.addBookButton');
 const addBooksModal = document.querySelector('.addBookModal');
 const modalFullscreenBackground = document.querySelector('.modalBackground');
@@ -131,12 +108,6 @@ addBookButton.addEventListener('click', () => {
 document.addEventListener('click', (e) => {
     closeModal(e);
 });
-
-// const submitButton = document.querySelector('.submitBook');
-// submitButton.addEventListener('click', () => {
-
-// });
-
 
 // Remove the "Confirm Form Resubmission" prompt on page refresh
 if ( window.history.replaceState ) {

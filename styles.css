@@ -96,10 +96,6 @@ button {
     text-align: center;
 }
 
-.readButton {
-    background-color: green;
-}
-
 .removeButton {
     background-color: var(--background-dark);
 }
