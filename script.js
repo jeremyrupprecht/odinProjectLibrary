@@ -100,18 +100,21 @@ function switchDarkLightMode() {
         root.style.setProperty('--foreground', 'white');
         root.style.setProperty('--background', 'rgb(226, 226, 226)');
         root.style.setProperty('--font-color', 'black');
+        // Set specific styling for the lightmode modal popup (inverting the background
+        // and foreground colors looks better on the input fields)
+        root.style.setProperty('--modal-foreground','rgb(226, 226, 226)');
+        root.style.setProperty('--modal-background','white');
         // Switch icon
         darkLightImage.src='images/moon.svg';
     } else {    
         root.style.setProperty('--foreground', 'rgb(15, 15, 15)');
         root.style.setProperty('--background', 'rgb(44, 44, 44)');
         root.style.setProperty('--font-color', 'white');
+        root.style.setProperty('--modal-foreground','rgb(15, 15, 15)');
+        root.style.setProperty('--modal-background','rgb(44, 44, 44)');
         darkLightImage.src='images/sun.svg';
     }
     darkMode = !darkMode;
-
-
-
 }
 
 const addBookButton = document.querySelector('.addBookButton');
@@ -147,7 +150,6 @@ addBookForm.addEventListener("submit", (e) => {
 });
 
 // Lightmode Darkmode Button
-
 const darkLightButton = document.querySelector(".darkLightButton");
 darkLightButton.addEventListener('click', () => {
     switchDarkLightMode();

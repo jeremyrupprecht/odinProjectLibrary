@@ -1,6 +1,8 @@
 :root {
     --foreground: rgb(15, 15, 15);
     --background: rgb(44, 44, 44);
+    --modal-foreground: rgb(15, 15, 15);
+    --modal-background: rgb(44, 44, 44);
     --font-color: white;
     --max-container-width: 1200px;
 }
@@ -116,7 +118,7 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.5);
-    background-color: var(--foreground);
+    background-color: var(--modal-foreground);
     border-radius: 20px;
 
 }
@@ -163,7 +165,7 @@ form > *:not(.focus-text) {
 input[type="text"], input[type="number"] {
     border-radius: 5px;
     outline: none;
-    background-color: var(--background);
+    background-color: var(--modal-background);
     border: 0;
     padding-left: 10px;
     font-size: 1.2rem;
@@ -248,6 +250,4 @@ input:focus:valid + div {
 input:focus:invalid + div {
     background-color: red;
 }
-
-/* Modal Popup Animation */
 
