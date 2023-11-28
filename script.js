@@ -93,11 +93,33 @@ function closeModal(e) {
     }
 }
 
+function switchDarkLightMode() {
+    let root = document.querySelector(":root");
+    let darkLightImage = document.querySelector(".darkLightImage");
+    if (darkMode) {
+        root.style.setProperty('--foreground', 'white');
+        root.style.setProperty('--background', 'rgb(226, 226, 226)');
+        root.style.setProperty('--font-color', 'black');
+        // Switch icon
+        darkLightImage.src='images/moon.svg';
+    } else {    
+        root.style.setProperty('--foreground', 'rgb(15, 15, 15)');
+        root.style.setProperty('--background', 'rgb(44, 44, 44)');
+        root.style.setProperty('--font-color', 'white');
+        darkLightImage.src='images/sun.svg';
+    }
+    darkMode = !darkMode;
+
+
+
+}
+
 const addBookButton = document.querySelector('.addBookButton');
 const addBooksModal = document.querySelector('.addBookModal');
 const modalFullscreenBackground = document.querySelector('.modalBackground');
 const submitButton = document.querySelector('.submitBook');
 let submitFlag = false;
+let darkMode = true;
 
 // Open modal
 addBookButton.addEventListener('click', () => {
@@ -122,4 +144,11 @@ addBookForm.addEventListener("submit", (e) => {
     submitFlag = true;
     closeModal(e);
     submitFlag = false;
+});
+
+// Lightmode Darkmode Button
+
+const darkLightButton = document.querySelector(".darkLightButton");
+darkLightButton.addEventListener('click', () => {
+    switchDarkLightMode();
 });

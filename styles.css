@@ -1,8 +1,7 @@
 :root {
-    --foreground-light: white;
-    --background-light: white;
-    --foreground-dark: rgb(15, 15, 15);
-    --background-dark: rgb(44, 44, 44);
+    --foreground: rgb(15, 15, 15);
+    --background: rgb(44, 44, 44);
+    --font-color: white;
     --max-container-width: 1200px;
 }
 
@@ -11,11 +10,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    color: white;
+    color: var(--font-color);
 }
 
 body {
-    background-color: var(--background-dark);
+    background-color: var(--background);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +27,7 @@ body > div {
 }
 
 .header, .footer {
-    background-color: var(--foreground-dark);
+    background-color: var(--foreground);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,7 +57,7 @@ button {
 .addBookButton {
     height: 50px;
     width: 200px;
-    background-color: var(--foreground-dark);
+    background-color: var(--foreground);
     font-size: 1.2rem;
     text-align: center;
     margin: 40px 0px;
@@ -75,7 +74,7 @@ button {
 }
 
 .bookCard {
-    background-color: var(--foreground-dark);
+    background-color: var(--foreground);
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -97,7 +96,7 @@ button {
 }
 
 .removeButton {
-    background-color: var(--background-dark);
+    background-color: var(--background);
 }
 
 .modalBackground {
@@ -117,7 +116,7 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--foreground-dark);
+    background-color: var(--foreground);
     border-radius: 20px;
 }
 
@@ -152,7 +151,7 @@ form > *:not(.focus-text) {
 input[type="text"], input[type="number"] {
     border-radius: 5px;
     outline: none;
-    background-color: var(--background-dark);
+    background-color: var(--background);
     border: 0;
     padding-left: 10px;
     font-size: 1.2rem;
@@ -186,6 +185,19 @@ form > button {
     font-size: 1.1rem;
     text-align: center;
     margin-bottom: 15px;
+}
+
+.darkLightButton {
+    border-radius: 32px;
+    background-color: var(--background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.darkLightImage {
+    width: 64px;
+    padding: 5px;
 }
 
 /* Validation Styling */
