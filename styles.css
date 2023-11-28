@@ -82,6 +82,7 @@ button {
     align-items: center;
     padding: 10px;
     border-radius: 20px;
+    max-width: calc(var(--max-container-width) / 2);
 }
 
 .bookCard > * {
